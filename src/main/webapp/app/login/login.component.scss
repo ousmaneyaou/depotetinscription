@@ -1,0 +1,86 @@
+$base-bgcolor: #354152;
+$base-color: #7e8ba3;
+$base-font-weight: 300;
+$base-font-size: 1rem;
+$base-line-height: 1.5;
+$base-font-family: Helvetica Neue;
+$base-font-family-fallback: sans-serif;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: $base-bgcolor;
+  color: $base-color;
+  font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family, $base-font-family-fallback;
+  margin: 0;
+  min-height: 100%;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.col-lg-6,
+.col-md-8,
+.col-sm-10 {
+  flex: 0 0 auto;
+  width: auto;
+  max-width: 100%;
+}
+
+.register {
+  box-shadow: 0 0 250px #000;
+  text-align: center;
+  padding: 4rem 2rem;
+
+  input {
+    border: 1px solid #242c37;
+    border-radius: 999px;
+    background-color: transparent;
+    text-align: center;
+
+    &[type="text"],
+    &[type="password"] {
+      width: 100%;
+      padding: 0.5rem 1rem;
+    }
+
+    &[type="text"] {
+      background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#242c37"><path d="M256 0C115.39 0 0 115.39 0 256s115.39 256 256 256 256-115.39 256-256S396.61 0 256 0zm0 469.33c-119.44 0-213.34-93.9-213.34-213.34S136.56 42.65 256 42.65 469.33 136.55 469.33 256 375.43 469.33 256 469.33zm0-42.67c104.91 0 192-87.09 192-192S360.91 42.65 256 42.65 64 129.74 64 234.66 151.09 427.66 256 427.66zm0 0"/><path d="M253.33 128h5.34c8.82 0 16-7.18 16-16V64c0-8.82-7.18-16-16-16h-5.34c-8.82 0-16 7.18-16 16v48c0 8.82 7.18 16 16 16zm0 0"/><path d="M270.68 234.66c0-3.72-1.45-7.26-4.09-9.9l-52.89-52.9c-5.45-5.45-14.29-5.45-19.74 0-5.44 5.44-5.44 14.29 0 19.73l52.9 52.9c2.63 2.63 4.08 6.17 4.08 9.89s-1.45 7.26-4.08 9.89l-52.9 52.89c-5.45 5.45-5.45 14.29 0 19.74 2.73 2.73 6.26 4.08 9.89 4.08s7.16-1.45 9.89-4.08l52.9-52.9c2.64-2.63 4.09-6.18 4.09-9.9zm0 0"/><path d="M253.33 384h5.34c8.82 0 16-7.18 16-16v-48c0-8.82-7.18-16-16-16h-5.34c-8.82 0-16 7.18-16 16v48c0 8.82 7.18 16 16 16zm0 0"/></svg>');
+    }
+
+    &[type="password"] {
+      background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#242c37"><path d="M195.334 223.333h-50v-62.666c0-61.022 49.645-110.667 110.666-110.667 61.022 0 110.667 49.645 110.667 110.667v62.666h-50v-62.666c0-33.452-27.215-60.667-60.667-60.667-33.451 0-60.666 27.215-60.666 60.667v62.666zm208.666 30v208.667h-296v-208.667h296zm-121 87.667c0-14.912-12.088-27-27-27s-27 12.088-27 27c0 7.811 3.317 14.844 8.619 19.773 4.385 4.075 6.881 9.8 6.881 15.785v22.942h23v-22.941c0-5.989 2.494-11.708 6.881-15.785 5.302-4.93 8.619-11.963 8.619-19.774z"/></svg>');
+    }
+
+    &[type="submit"] {
+      background-image: linear-gradient(160deg, #8ceabb 0%, #378f7b 100%);
+      color: #fff;
+      margin-bottom: 6rem;
+      width: 100%;
+    }
+  }
+
+  .mt-3 {
+    margin-top: 1rem;
+  }
+
+  .alert-link {
+    color: $base-color;
+    text-decoration: underline;
+
+    &:hover {
+      color: darken($base-color, 10%);
+    }
+  }
+}

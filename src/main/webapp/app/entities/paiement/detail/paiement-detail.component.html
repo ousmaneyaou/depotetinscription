@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="paiement">
+      <h2 data-cy="paiementDetailsHeading"><span>Paiement</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ paiement.id }}</span>
+        </dd>
+        <dt><span>Date Paie</span></dt>
+        <dd>
+          <span>{{ paiement.datePaie | formatMediumDate }}</span>
+        </dd>
+        <dt><span>Etat</span></dt>
+        <dd>
+          <span>{{ paiement.etat }}</span>
+        </dd>
+        <dt><span>Inscription</span></dt>
+        <dd>
+          <div *ngIf="paiement.inscription">
+            <a [routerLink]="['/inscription', paiement.inscription.id, 'view']">{{ paiement.inscription.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/paiement', paiement.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

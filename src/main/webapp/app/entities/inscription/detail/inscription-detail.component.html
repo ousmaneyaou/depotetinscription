@@ -1,0 +1,49 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="inscription">
+      <h2 data-cy="inscriptionDetailsHeading"><span>Inscription</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ inscription.id }}</span>
+        </dd>
+        <dt><span>Date Inscription</span></dt>
+        <dd>
+          <span>{{ inscription.dateInscription | formatMediumDate }}</span>
+        </dd>
+        <dt><span>Regime</span></dt>
+        <dd>
+          <span>{{ inscription.regime }}</span>
+        </dd>
+        <dt><span>Depot</span></dt>
+        <dd>
+          <span *ngFor="let depot of inscription.depots; let last = last">
+            <a [routerLink]="['/depot', depot.id, 'view']">{{ depot.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span>Administration</span></dt>
+        <dd>
+          <div *ngIf="inscription.administration">
+            <a [routerLink]="['/administration', inscription.administration.id, 'view']">{{ inscription.administration.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/inscription', inscription.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

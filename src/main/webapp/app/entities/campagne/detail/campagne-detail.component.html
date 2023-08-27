@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="campagne">
+      <h2 data-cy="campagneDetailsHeading"><span>Campagne</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ campagne.id }}</span>
+        </dd>
+        <dt><span>Intitule</span></dt>
+        <dd>
+          <span>{{ campagne.intitule }}</span>
+        </dd>
+        <dt><span>Date Debut</span></dt>
+        <dd>
+          <span>{{ campagne.dateDebut | formatMediumDate }}</span>
+        </dd>
+        <dt><span>Date Fin</span></dt>
+        <dd>
+          <span>{{ campagne.dateFin | formatMediumDate }}</span>
+        </dd>
+        <dt><span>Dossier</span></dt>
+        <dd>
+          <div *ngIf="campagne.dossier">
+            <a [routerLink]="['/dossier', campagne.dossier.id, 'view']">{{ campagne.dossier.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/campagne', campagne.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

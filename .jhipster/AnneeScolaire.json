@@ -1,0 +1,31 @@
+{
+  "applications": "*",
+  "changelogDate": "20230814001400",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "annee_scolaire",
+  "fields": [
+    {
+      "fieldName": "libelle",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "enCours",
+      "fieldType": "Boolean"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "AnneeScolaire",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "campagne",
+      "otherEntityRelationshipName": "anneeScolaire",
+      "relationshipName": "campagne",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

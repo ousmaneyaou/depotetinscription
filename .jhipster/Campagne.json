@@ -1,0 +1,41 @@
+{
+  "applications": "*",
+  "changelogDate": "20230814001359",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "campagne",
+  "fields": [
+    {
+      "fieldName": "intitule",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateDebut",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateFin",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Campagne",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "anneeScolaire",
+      "otherEntityRelationshipName": "campagne",
+      "relationshipName": "anneeScolaire",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "dossier",
+      "otherEntityRelationshipName": "campagne",
+      "relationshipName": "dossier",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

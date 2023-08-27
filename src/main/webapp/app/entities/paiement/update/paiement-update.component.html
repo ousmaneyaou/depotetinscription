@@ -1,0 +1,71 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-paiement-heading" data-cy="PaiementCreateUpdateHeading">Create or edit a Paiement</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_datePaie">Date Paie</label>
+          <div class="input-group">
+            <input
+              id="field_datePaie"
+              data-cy="datePaie"
+              type="text"
+              class="form-control"
+              name="datePaie"
+              ngbDatepicker
+              #datePaieDp="ngbDatepicker"
+              formControlName="datePaie"
+            />
+            <button type="button" class="btn btn-secondary" (click)="datePaieDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_etat">Etat</label>
+          <input type="checkbox" class="form-check" name="etat" id="field_etat" data-cy="etat" formControlName="etat" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_inscription">Inscription</label>
+          <select
+            class="form-control"
+            id="field_inscription"
+            data-cy="inscription"
+            name="inscription"
+            formControlName="inscription"
+            [compareWith]="compareInscription"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="inscriptionOption" *ngFor="let inscriptionOption of inscriptionsSharedCollection">
+              {{ inscriptionOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

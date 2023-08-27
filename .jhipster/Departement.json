@@ -1,0 +1,33 @@
+{
+  "applications": "*",
+  "changelogDate": "20230814001402",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "departement",
+  "fields": [
+    {
+      "fieldName": "libelle",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Departement",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "niveau",
+      "otherEntityRelationshipName": "departement",
+      "relationshipName": "niveau",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "faculte",
+      "otherEntityRelationshipName": "departement",
+      "relationshipName": "faculte",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

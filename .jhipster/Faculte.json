@@ -1,0 +1,33 @@
+{
+  "applications": "*",
+  "changelogDate": "20230814001403",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "faculte",
+  "fields": [
+    {
+      "fieldName": "libelle",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Faculte",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "departement",
+      "otherEntityRelationshipName": "faculte",
+      "relationshipName": "departement",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "universite",
+      "otherEntityRelationshipName": "faculte",
+      "relationshipName": "universite",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

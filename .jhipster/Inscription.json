@@ -1,0 +1,44 @@
+{
+  "applications": "*",
+  "changelogDate": "20230814001406",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "inscription",
+  "fields": [
+    {
+      "fieldName": "dateInscription",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "regime",
+      "fieldType": "Boolean"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Inscription",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "paiement",
+      "otherEntityRelationshipName": "inscription",
+      "relationshipName": "paiement",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "depot",
+      "otherEntityRelationshipName": "inscription",
+      "ownerSide": true,
+      "relationshipName": "depot",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "administration",
+      "otherEntityRelationshipName": "inscription",
+      "relationshipName": "administration",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

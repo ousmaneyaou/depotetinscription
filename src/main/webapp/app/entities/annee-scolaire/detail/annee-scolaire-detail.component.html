@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="anneeScolaire">
+      <h2 data-cy="anneeScolaireDetailsHeading"><span>Annee Scolaire</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ anneeScolaire.id }}</span>
+        </dd>
+        <dt><span>Libelle</span></dt>
+        <dd>
+          <span>{{ anneeScolaire.libelle }}</span>
+        </dd>
+        <dt><span>En Cours</span></dt>
+        <dd>
+          <span>{{ anneeScolaire.enCours }}</span>
+        </dd>
+        <dt><span>Campagne</span></dt>
+        <dd>
+          <div *ngIf="anneeScolaire.campagne">
+            <a [routerLink]="['/campagne', anneeScolaire.campagne.id, 'view']">{{ anneeScolaire.campagne.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/annee-scolaire', anneeScolaire.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,229 @@
+<div style=" margin-top: 40px; border-radius: 10px; border: 1px solid #033bf4;">
+  <h2 id="page-heading" data-cy="BachelierHeading">
+    <span data-cy="registerTitle" style="color: Green;font-size: 28px;margin-left: 10px; margin-top: 80px; font-family: 'Cambria'">Liste des Bacheliers</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Rafraîchir la liste</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-bachelier"
+        [routerLink]="['/bachelier/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Créer un nouveau Bachelier </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="bacheliers?.length === 0">
+    <span>Aucun Bachelier trouvé</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="bacheliers && bacheliers.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead style="font-size: 12px; font-family: 'Cambria'">
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id" class="d-flex" style="font-size: 12px; font-family: 'Cambria'">
+            <div>
+              <span>ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="sexe">
+            <div class="d-flex">
+              <span>Sexe</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="dateNaissance">
+            <div class="d-flex">
+              <span>Date Naissance</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lieuNaissance">
+            <div class="d-flex">
+              <span>Lieu Naissance</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nationalite">
+            <div class="d-flex">
+              <span>Nationalite</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="telephone">
+            <div class="d-flex">
+              <span>Telephone</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="numeroTable">
+            <div class="d-flex">
+              <span>Numero Table</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="serie">
+            <div class="d-flex">
+              <span>Serie</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="diplome">
+            <div class="d-flex">
+              <span>Diplome</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="numeroTelephone1">
+            <div class="d-flex">
+              <span>Numero Telephone 1</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="anneeObtention">
+            <div class="d-flex">
+              <span>Annee Obtention</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lieuObtention">
+            <div class="d-flex">
+              <span>Lieu Obtention</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="mention">
+            <div class="d-flex">
+              <span>Mention</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="choix1">
+            <div class="d-flex">
+              <span>Choix 1</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="choix2">
+            <div class="d-flex">
+              <span>Choix 2</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="choix3">
+            <div class="d-flex">
+              <span>Choix 3</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="photo">
+            <div class="d-flex">
+              <span>Photo</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="user.login">
+            <div class="d-flex">
+              <span>User</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bachelier of bacheliers; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/bachelier', bachelier.id, 'view']">{{ bachelier.id }}</a>
+          </td>
+          <td>{{ bachelier.sexe }}</td>
+          <td>{{ bachelier.dateNaissance | formatMediumDate }}</td>
+          <td>{{ bachelier.lieuNaissance }}</td>
+          <td>{{ bachelier.nationalite }}</td>
+          <td>{{ bachelier.telephone }}</td>
+          <td>{{ bachelier.numeroTable }}</td>
+          <td>{{ bachelier.serie }}</td>
+          <td>{{ bachelier.diplome }}</td>
+          <td>{{ bachelier.numeroTelephone1 }}</td>
+          <td>{{ bachelier.anneeObtention }}</td>
+          <td>{{ bachelier.lieuObtention }}</td>
+          <td>{{ bachelier.mention }}</td>
+          <td>{{ bachelier.choix1 }}</td>
+          <td>{{ bachelier.choix2 }}</td>
+          <td>{{ bachelier.choix3 }}</td>
+          <td>
+            <a *ngIf="bachelier.photo" (click)="openFile(bachelier.photo, bachelier.photoContentType)">
+              <img
+                [src]="'data:' + bachelier.photoContentType + ';base64,' + bachelier.photo"
+                style="max-height: 30px"
+                alt="bachelier image"
+              />
+            </a>
+            <span *ngIf="bachelier.photo">{{ bachelier.photoContentType }}, {{ byteSize(bachelier.photo) }}</span>
+          </td>
+          <td>
+            {{ bachelier.user?.login }}
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/bachelier', bachelier.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/bachelier', bachelier.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(bachelier)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="bacheliers && bacheliers.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

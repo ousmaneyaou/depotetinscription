@@ -1,0 +1,105 @@
+<div class="d-flex justify-content-center" style=" margin-top: 40px; border-radius: 10px; border: 1px solid #033bf4;">
+  <div class="col-8">
+    <div *ngIf="bachelier">
+      <h2 data-cy="bachelierDetailsHeading"><span>Bachelier</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ bachelier.id }}</span>
+        </dd>
+        <dt><span>Sexe</span></dt>
+        <dd>
+          <span>{{ bachelier.sexe }}</span>
+        </dd>
+        <dt><span>Date Naissance</span></dt>
+        <dd>
+          <span>{{ bachelier.dateNaissance | formatMediumDate }}</span>
+        </dd>
+        <dt><span>Lieu Naissance</span></dt>
+        <dd>
+          <span>{{ bachelier.lieuNaissance }}</span>
+        </dd>
+        <dt><span>Nationalite</span></dt>
+        <dd>
+          <span>{{ bachelier.nationalite }}</span>
+        </dd>
+        <dt><span>Telephone</span></dt>
+        <dd>
+          <span>{{ bachelier.telephone }}</span>
+        </dd>
+        <dt><span>Numero Table</span></dt>
+        <dd>
+          <span>{{ bachelier.numeroTable }}</span>
+        </dd>
+        <dt><span>Serie</span></dt>
+        <dd>
+          <span>{{ bachelier.serie }}</span>
+        </dd>
+        <dt><span>Diplome</span></dt>
+        <dd>
+          <span>{{ bachelier.diplome }}</span>
+        </dd>
+        <dt><span>Numero Telephone 1</span></dt>
+        <dd>
+          <span>{{ bachelier.numeroTelephone1 }}</span>
+        </dd>
+        <dt><span>Annee Obtention</span></dt>
+        <dd>
+          <span>{{ bachelier.anneeObtention }}</span>
+        </dd>
+        <dt><span>Lieu Obtention</span></dt>
+        <dd>
+          <span>{{ bachelier.lieuObtention }}</span>
+        </dd>
+        <dt><span>Mention</span></dt>
+        <dd>
+          <span>{{ bachelier.mention }}</span>
+        </dd>
+        <dt><span>Choix 1</span></dt>
+        <dd>
+          <span>{{ bachelier.choix1 }}</span>
+        </dd>
+        <dt><span>Choix 2</span></dt>
+        <dd>
+          <span>{{ bachelier.choix2 }}</span>
+        </dd>
+        <dt><span>Choix 3</span></dt>
+        <dd>
+          <span>{{ bachelier.choix3 }}</span>
+        </dd>
+        <dt><span>Photo</span></dt>
+        <dd>
+          <div *ngIf="bachelier.photo">
+            <a (click)="openFile(bachelier.photo, bachelier.photoContentType)">
+              <img
+                [src]="'data:' + bachelier.photoContentType + ';base64,' + bachelier.photo"
+                style="max-width: 100%"
+                alt="bachelier image"
+              />
+            </a>
+            {{ bachelier.photoContentType }}, {{ byteSize(bachelier.photo) }}
+          </div>
+        </dd>
+        <dt><span>User</span></dt>
+        <dd>
+          <span>{{ bachelier.user?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/bachelier', bachelier.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

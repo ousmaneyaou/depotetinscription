@@ -1,0 +1,92 @@
+{
+  "applications": "*",
+  "changelogDate": "20230814001357",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "bachelier",
+  "fields": [
+    {
+      "fieldName": "sexe",
+      "fieldType": "EnumSexe",
+      "fieldValues": "MASCULIN,FEMININ"
+    },
+    {
+      "fieldName": "dateNaissance",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "lieuNaissance",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nationalite",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "telephone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "numeroTable",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "serie",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "diplome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "numeroTelephone1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "anneeObtention",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lieuObtention",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "mention",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "choix1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "choix2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "choix3",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "photo",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Bachelier",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "id": false,
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "bachelier",
+      "ownerSide": true,
+      "relationshipName": "user",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}

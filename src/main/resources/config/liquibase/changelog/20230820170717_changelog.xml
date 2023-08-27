@@ -1,0 +1,25 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="YaouSouleyOusmane (generated)" id="1692551259814-3">
+        <addColumn tableName="bachelier">
+            <column name="numero_telephone_1" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="YaouSouleyOusmane (generated)" id="1692551259814-4">
+        <addColumn tableName="bachelier">
+            <column name="user_id" type="int8"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="YaouSouleyOusmane (generated)" id="1692551259814-5">
+        <addUniqueConstraint columnNames="user_id" constraintName="UC_BACHELIERUSER_ID_COL" tableName="bachelier"/>
+    </changeSet>
+    <changeSet author="YaouSouleyOusmane (generated)" id="1692551259814-6">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="bachelier" constraintName="FKndk280swlrh99gltmqj8ovkyb" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
+    </changeSet>
+    <changeSet author="YaouSouleyOusmane (generated)" id="1692551259814-7">
+        <dropColumn columnName="numero_diplome" tableName="bachelier"/>
+    </changeSet>
+    <changeSet author="YaouSouleyOusmane (generated)" id="1692551259814-2">
+        <addUniqueConstraint columnNames="login" constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
+    </changeSet>
+</databaseChangeLog>

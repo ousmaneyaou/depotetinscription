@@ -1,0 +1,205 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-bachelier-heading" data-cy="BachelierCreateUpdateHeading">Create or edit a Bachelier</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_sexe">Sexe</label>
+          <select class="form-control" name="sexe" formControlName="sexe" id="field_sexe" data-cy="sexe">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let enumSexe of enumSexeValues" [value]="enumSexe">enumSexe</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_dateNaissance">Date Naissance</label>
+          <div class="input-group">
+            <input
+              id="field_dateNaissance"
+              data-cy="dateNaissance"
+              type="text"
+              class="form-control"
+              name="dateNaissance"
+              ngbDatepicker
+              #dateNaissanceDp="ngbDatepicker"
+              formControlName="dateNaissance"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateNaissanceDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_lieuNaissance">Lieu Naissance</label>
+          <input
+            type="text"
+            class="form-control"
+            name="lieuNaissance"
+            id="field_lieuNaissance"
+            data-cy="lieuNaissance"
+            formControlName="lieuNaissance"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_nationalite">Nationalite</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nationalite"
+            id="field_nationalite"
+            data-cy="nationalite"
+            formControlName="nationalite"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_telephone">Telephone</label>
+          <input type="text" class="form-control" name="telephone" id="field_telephone" data-cy="telephone" formControlName="telephone" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_numeroTable">Numero Table</label>
+          <input
+            type="text"
+            class="form-control"
+            name="numeroTable"
+            id="field_numeroTable"
+            data-cy="numeroTable"
+            formControlName="numeroTable"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_serie">Serie</label>
+          <input type="text" class="form-control" name="serie" id="field_serie" data-cy="serie" formControlName="serie" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_diplome">Diplome</label>
+          <input type="text" class="form-control" name="diplome" id="field_diplome" data-cy="diplome" formControlName="diplome" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_numeroTelephone1">Numero Telephone 1</label>
+          <input
+            type="text"
+            class="form-control"
+            name="numeroTelephone1"
+            id="field_numeroTelephone1"
+            data-cy="numeroTelephone1"
+            formControlName="numeroTelephone1"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_anneeObtention">Annee Obtention</label>
+          <input
+            type="text"
+            class="form-control"
+            name="anneeObtention"
+            id="field_anneeObtention"
+            data-cy="anneeObtention"
+            formControlName="anneeObtention"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_lieuObtention">Lieu Obtention</label>
+          <input
+            type="text"
+            class="form-control"
+            name="lieuObtention"
+            id="field_lieuObtention"
+            data-cy="lieuObtention"
+            formControlName="lieuObtention"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_mention">Mention</label>
+          <input type="text" class="form-control" name="mention" id="field_mention" data-cy="mention" formControlName="mention" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_choix1">Choix 1</label>
+          <input type="text" class="form-control" name="choix1" id="field_choix1" data-cy="choix1" formControlName="choix1" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_choix2">Choix 2</label>
+          <input type="text" class="form-control" name="choix2" id="field_choix2" data-cy="choix2" formControlName="choix2" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_choix3">Choix 3</label>
+          <input type="text" class="form-control" name="choix3" id="field_choix3" data-cy="choix3" formControlName="choix3" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_photo">Photo</label>
+          <div>
+            <img
+              [src]="'data:' + editForm.get('photoContentType')!.value + ';base64,' + editForm.get('photo')!.value"
+              style="max-height: 100px"
+              *ngIf="editForm.get('photo')!.value"
+              alt="bachelier image"
+            />
+            <div *ngIf="editForm.get('photo')!.value" class="form-text text-danger clearfix">
+              <span class="pull-start">{{ editForm.get('photoContentType')!.value }}, {{ byteSize(editForm.get('photo')!.value!) }}</span>
+              <button
+                type="button"
+                (click)="clearInputImage('photo', 'photoContentType', 'file_photo')"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input type="file" id="file_photo" data-cy="photo" (change)="setFileData($event, 'photo', true)" accept="image/*" />
+          </div>
+          <input type="hidden" class="form-control" name="photo" id="field_photo" data-cy="photo" formControlName="photo" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="photoContentType"
+            id="field_photoContentType"
+            formControlName="photoContentType"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_user">User</label>
+          <select class="form-control" id="field_user" data-cy="user" name="user" formControlName="user" [compareWith]="compareUser">
+            <option [ngValue]="null"></option>
+            <option [ngValue]="userOption" *ngFor="let userOption of usersSharedCollection">{{ userOption.login }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

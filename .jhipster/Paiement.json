@@ -1,0 +1,31 @@
+{
+  "applications": "*",
+  "changelogDate": "20230814001407",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "paiement",
+  "fields": [
+    {
+      "fieldName": "datePaie",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "etat",
+      "fieldType": "Boolean"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Paiement",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "inscription",
+      "otherEntityRelationshipName": "paiement",
+      "relationshipName": "inscription",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

@@ -1,0 +1,40 @@
+{
+  "applications": "*",
+  "changelogDate": "20230814001358",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "dossier",
+  "fields": [
+    {
+      "fieldName": "valider",
+      "fieldType": "Boolean"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Dossier",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "niveau",
+      "otherEntityRelationshipName": "dossier",
+      "relationshipName": "niveau",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "campagne",
+      "otherEntityRelationshipName": "dossier",
+      "relationshipName": "campagne",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "depot",
+      "otherEntityRelationshipName": "dossier",
+      "ownerSide": true,
+      "relationshipName": "depot",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "no"
+}
