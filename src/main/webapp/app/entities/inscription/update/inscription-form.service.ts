@@ -21,7 +21,6 @@ type InscriptionFormGroupContent = {
   dateInscription: FormControl<IInscription['dateInscription']>;
   regime: FormControl<IInscription['regime']>;
   depots: FormControl<IInscription['depots']>;
-  administration: FormControl<IInscription['administration']>;
 };
 
 export type InscriptionFormGroup = FormGroup<InscriptionFormGroupContent>;
@@ -44,7 +43,6 @@ export class InscriptionFormService {
       dateInscription: new FormControl(inscriptionRawValue.dateInscription),
       regime: new FormControl(inscriptionRawValue.regime),
       depots: new FormControl(inscriptionRawValue.depots ?? []),
-      administration: new FormControl(inscriptionRawValue.administration),
     });
   }
 

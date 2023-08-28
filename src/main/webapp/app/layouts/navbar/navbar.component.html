@@ -2,8 +2,11 @@
   <div class="container-fluid">
     <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
       <span class="logo-img"></span>
-      <h1 class="navbar-brant text-uppercase mx-4 py-3">Ministère de l'Enseignement Supérieur<br />et de la Recherche</h1>
+      <h1 class="navbar-brant text-uppercase mx-4 py-3" style="font-weight: bold;">
+        Ministère de l'Enseignement Supérieur<br />et de la Recherche
+      </h1>
     </a>
+
     <a
       class="navbar-toggler d-lg-none"
       href="javascript:void(0);"
@@ -22,22 +25,40 @@
           <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
             <span>
               <!--<fa-icon icon="home"></fa-icon>-->
-              <span style="color: #000000; font-size: 10px;font-size: 10px;">Accueil</span>
+              <strong style="color: #000000; font-size: 10px;">Accueil</strong>
             </span>
           </a>
         </li>
-        <li class="nav-item pe-2">
-          <a class="nav-link nav-link-transition" href="#" style="color: black; font-size: 10px;">Mon compte</a>
+        <li class="nav-item">
+          <a class="nav-link">
+            <span>
+              <strong style="color: #000000; font-size: 10px;">Postulant</strong>
+            </span>
+          </a>
         </li>
-        <li class="nav-item pe-2">
-          <a class="nav-link nav-link-transition" href="#" style="color: black; font-size: 10px;">Dépot</a>
+        <li class="nav-item">
+          <a class="nav-link">
+            <span>
+              <strong style="color: #000000; font-size: 10px;">Orienté</strong>
+            </span>
+          </a>
         </li>
-        <li class="nav-item pe-2">
-          <a class="nav-link nav-link-transition" href="#" style="color: black; font-size: 10px;">Orienté</a>
+        <li class="nav-item">
+          <a class="nav-link">
+            <span>
+              <strong style="color: #000000; font-size: 10px;">Dépôt</strong>
+            </span>
+          </a>
         </li>
-        <li class="nav-item pe-2">
-          <a class="nav-link nav-link-transition" href="#" style="color: black; font-size: 10px;">Inscription</a>
+        <li class="nav-item">
+          <a class="nav-link">
+            <span>
+              <strong style="color: #000000; font-size: 10px;">Inscroption</strong>
+            </span>
+          </a>
         </li>
+
+
         <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
         <li
           *ngSwitchCase="true"
@@ -50,7 +71,7 @@
           <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu" data-cy="entity">
             <span>
               <fa-icon icon="th-list"></fa-icon>
-              <span style="color: black; font-size: 10px;">Entities</span>
+              <strong style="color: black; font-size: 10px">Entities</strong>
             </span>
           </a>
           <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
@@ -186,18 +207,7 @@
                 <span>Paiement</span>
               </a>
             </li>
-            <li>
-              <a
-                class="dropdown-item"
-                routerLink="administration"
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }"
-                (click)="collapseNavbar()"
-              >
-                <fa-icon icon="asterisk" [fixedWidth]="true" style="color: #000000"></fa-icon>
-                <span style="color: #000000">Administration</span>
-              </a>
-            </li>
+
             <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
           </ul>
         </li>
@@ -212,7 +222,7 @@
           <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="admin-menu" data-cy="adminMenu">
             <span>
               <fa-icon icon="users-cog" style="color: #000000"></fa-icon>
-              <span style="color: #000000; font-size: 10px;">Administration</span>
+              <strong style="color: #000000; font-size: 10px">Administration</strong>
             </span>
           </a>
           <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="admin-menu">
@@ -265,7 +275,7 @@
           <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="account-menu" data-cy="accountMenu">
             <span *ngIf="!account?.imageUrl">
               <fa-icon icon="user" style="color: black"></fa-icon>
-              <span class="nav-link-transition" style="color: black; font-size: 10px;">Compte</span>
+              <strong class="nav-link-transition" style="color: black; font-size: 10px">Compte</strong>
             </span>
             <span *ngIf="account?.imageUrl">
               <img [src]="account!.imageUrl" class="profile-image rounded-circle" alt="Avatar" />

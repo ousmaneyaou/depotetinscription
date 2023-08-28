@@ -85,7 +85,8 @@ public class AdministrationResource {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
-        Administration result = administrationRepository.save(administration);
+        // no save call needed as we have no fields that can be updated
+        Administration result = administration;
         return ResponseEntity
             .ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, false, ENTITY_NAME, administration.getId().toString()))
@@ -124,8 +125,8 @@ public class AdministrationResource {
             .findById(administration.getId())
             .map(existingAdministration -> {
                 return existingAdministration;
-            })
-            .map(administrationRepository::save);
+            })// .map(administrationRepository::save)
+        ;
 
         return ResponseUtil.wrapOrNotFound(
             result,
@@ -136,17 +137,12 @@ public class AdministrationResource {
     /**
      * {@code GET  /administrations} : get all the administrations.
      *
-     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of administrations in body.
      */
     @GetMapping("/administrations")
-    public List<Administration> getAllAdministrations(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+    public List<Administration> getAllAdministrations() {
         log.debug("REST request to get all Administrations");
-        if (eagerload) {
-            return administrationRepository.findAllWithEagerRelationships();
-        } else {
-            return administrationRepository.findAll();
-        }
+        return administrationRepository.findAll();
     }
 
     /**
@@ -158,7 +154,7 @@ public class AdministrationResource {
     @GetMapping("/administrations/{id}")
     public ResponseEntity<Administration> getAdministration(@PathVariable Long id) {
         log.debug("REST request to get Administration : {}", id);
-        Optional<Administration> administration = administrationRepository.findOneWithEagerRelationships(id);
+        Optional<Administration> administration = administrationRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(administration);
     }
 

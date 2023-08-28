@@ -23,7 +23,6 @@ describe('Inscription Form Service', () => {
             dateInscription: expect.any(Object),
             regime: expect.any(Object),
             depots: expect.any(Object),
-            administration: expect.any(Object),
           })
         );
       });
@@ -37,7 +36,6 @@ describe('Inscription Form Service', () => {
             dateInscription: expect.any(Object),
             regime: expect.any(Object),
             depots: expect.any(Object),
-            administration: expect.any(Object),
           })
         );
       });

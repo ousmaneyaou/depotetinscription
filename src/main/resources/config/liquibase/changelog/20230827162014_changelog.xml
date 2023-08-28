@@ -1,0 +1,24 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="YaouSouleyOusmane (generated)" id="1693153234416-3">
+        <createTable tableName="administration">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="administrationPK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="YaouSouleyOusmane (generated)" id="1693153234416-4">
+        <addColumn tableName="inscription">
+            <column name="administration_id" type="int8"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="YaouSouleyOusmane (generated)" id="1693153234416-5">
+        <addForeignKeyConstraint baseColumnNames="administration_id" baseTableName="inscription" constraintName="FKhkr8q4g36mbobym9qdtfa00qk" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="administration" validate="true"/>
+    </changeSet>
+    <changeSet author="YaouSouleyOusmane (generated)" id="1693153234416-1">
+        <dropUniqueConstraint constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="YaouSouleyOusmane (generated)" id="1693153234416-2">
+        <addUniqueConstraint columnNames="login" constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
+    </changeSet>
+</databaseChangeLog>

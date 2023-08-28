@@ -49,23 +49,6 @@
             <option [ngValue]="depotOption" *ngFor="let depotOption of depotsSharedCollection">{{ depotOption.id }}</option>
           </select>
         </div>
-
-        <div class="row mb-3">
-          <label class="form-label" for="field_administration">Administration</label>
-          <select
-            class="form-control"
-            id="field_administration"
-            data-cy="administration"
-            name="administration"
-            formControlName="administration"
-            [compareWith]="compareAdministration"
-          >
-            <option [ngValue]="null"></option>
-            <option [ngValue]="administrationOption" *ngFor="let administrationOption of administrationsSharedCollection">
-              {{ administrationOption.id }}
-            </option>
-          </select>
-        </div>
       </div>
 
       <div>

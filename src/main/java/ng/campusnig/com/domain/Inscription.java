@@ -43,7 +43,6 @@ public class Inscription implements Serializable {
     private Set<Depot> depots = new HashSet<>();
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "inscriptions", "user" }, allowSetters = true)
     private Administration administration;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

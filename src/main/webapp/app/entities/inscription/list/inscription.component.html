@@ -1,5 +1,5 @@
 <div>
-  <h2 id="page-heading" data-cy="InscriptionHeading">
+  <h2 id="page-heading" data-cy="InscriptionHeading" style="margin-top: 40px;">
     <span>Inscriptions</span>
 
     <div class="d-flex justify-content-end">
@@ -50,12 +50,6 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="administration.id">
-            <div class="d-flex">
-              <span>Administration</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -66,11 +60,6 @@
           </td>
           <td>{{ inscription.dateInscription | formatMediumDate }}</td>
           <td>{{ inscription.regime }}</td>
-          <td>
-            <div *ngIf="inscription.administration">
-              <a [routerLink]="['/administration', inscription.administration.id, 'view']">{{ inscription.administration.id }}</a>
-            </div>
-          </td>
           <td class="text-end">
             <div class="btn-group">
               <button

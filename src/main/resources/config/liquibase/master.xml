@@ -22,7 +22,7 @@
     <include file="config/liquibase/changelog/20230814001405_added_entity_Depot.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20230814001406_added_entity_Inscription.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20230814001407_added_entity_Paiement.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20230814001408_added_entity_Administration.xml" relativeToChangelogFile="false"/>
+
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20230814001358_added_entity_constraints_Dossier.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20230814001359_added_entity_constraints_Campagne.xml" relativeToChangelogFile="false"/>
@@ -34,7 +34,7 @@
     <include file="config/liquibase/changelog/20230814001407_added_entity_constraints_Paiement.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20230814001357_added_entity_constraints_Bachelier.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20230820170717_changelog.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20230820173337_changelog.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230827162014_changelog.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

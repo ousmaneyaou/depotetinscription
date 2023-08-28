@@ -1,11 +1,11 @@
-<div style=" margin-top: 40px; border-radius: 10px; border: 1px solid #033bf4;">
+<div>
   <h2 id="page-heading" data-cy="BachelierHeading">
-    <span data-cy="registerTitle" style="color: Green;font-size: 28px;margin-left: 10px; margin-top: 80px; font-family: 'Cambria'">Liste des Bacheliers</span>
+    <span>Bacheliers</span>
 
     <div class="d-flex justify-content-end">
       <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
         <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
-        <span>Rafraîchir la liste</span>
+        <span>Refresh list</span>
       </button>
 
       <button
@@ -15,7 +15,7 @@
         [routerLink]="['/bachelier/new']"
       >
         <fa-icon icon="plus"></fa-icon>
-        <span> Créer un nouveau Bachelier </span>
+        <span> Create a new Bachelier </span>
       </button>
     </div>
   </h2>
@@ -25,15 +25,15 @@
   <jhi-alert></jhi-alert>
 
   <div class="alert alert-warning" id="no-result" *ngIf="bacheliers?.length === 0">
-    <span>Aucun Bachelier trouvé</span>
+    <span>No Bacheliers found</span>
   </div>
 
   <div class="table-responsive table-entities" id="entities" *ngIf="bacheliers && bacheliers.length > 0">
     <table class="table table-striped" aria-describedby="page-heading">
-      <thead style="font-size: 12px; font-family: 'Cambria'">
+      <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id" class="d-flex" style="font-size: 12px; font-family: 'Cambria'">
-            <div>
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
               <span>ID</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>

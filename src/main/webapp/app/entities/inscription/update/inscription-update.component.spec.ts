@@ -11,8 +11,6 @@ import { InscriptionService } from '../service/inscription.service';
 import { IInscription } from '../inscription.model';
 import { IDepot } from 'app/entities/depot/depot.model';
 import { DepotService } from 'app/entities/depot/service/depot.service';
-import { IAdministration } from 'app/entities/administration/administration.model';
-import { AdministrationService } from 'app/entities/administration/service/administration.service';
 
 import { InscriptionUpdateComponent } from './inscription-update.component';
 
@@ -23,7 +21,6 @@ describe('Inscription Management Update Component', () => {
   let inscriptionFormService: InscriptionFormService;
   let inscriptionService: InscriptionService;
   let depotService: DepotService;
-  let administrationService: AdministrationService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -47,7 +44,6 @@ describe('Inscription Management Update Component', () => {
     inscriptionFormService = TestBed.inject(InscriptionFormService);
     inscriptionService = TestBed.inject(InscriptionService);
     depotService = TestBed.inject(DepotService);
-    administrationService = TestBed.inject(AdministrationService);
 
     comp = fixture.componentInstance;
   });
@@ -75,40 +71,15 @@ describe('Inscription Management Update Component', () => {
       expect(comp.depotsSharedCollection).toEqual(expectedCollection);
     });
 
-    it('Should call Administration query and add missing value', () => {
-      const inscription: IInscription = { id: 456 };
-      const administration: IAdministration = { id: 86522 };
-      inscription.administration = administration;
-
-      const administrationCollection: IAdministration[] = [{ id: 28940 }];
-      jest.spyOn(administrationService, 'query').mockReturnValue(of(new HttpResponse({ body: administrationCollection })));
-      const additionalAdministrations = [administration];
-      const expectedCollection: IAdministration[] = [...additionalAdministrations, ...administrationCollection];
-      jest.spyOn(administrationService, 'addAdministrationToCollectionIfMissing').mockReturnValue(expectedCollection);
-
-      activatedRoute.data = of({ inscription });
-      comp.ngOnInit();
-
-      expect(administrationService.query).toHaveBeenCalled();
-      expect(administrationService.addAdministrationToCollectionIfMissing).toHaveBeenCalledWith(
-        administrationCollection,
-        ...additionalAdministrations.map(expect.objectContaining)
-      );
-      expect(comp.administrationsSharedCollection).toEqual(expectedCollection);
-    });
-
     it('Should update editForm', () => {
       const inscription: IInscription = { id: 456 };
       const depot: IDepot = { id: 74293 };
       inscription.depots = [depot];
-      const administration: IAdministration = { id: 7085 };
-      inscription.administration = administration;
 
       activatedRoute.data = of({ inscription });
       comp.ngOnInit();
 
       expect(comp.depotsSharedCollection).toContain(depot);
-      expect(comp.administrationsSharedCollection).toContain(administration);
       expect(comp.inscription).toEqual(inscription);
     });
   });
@@ -189,16 +160,6 @@ describe('Inscription Management Update Component', () => {
         jest.spyOn(depotService, 'compareDepot');
         comp.compareDepot(entity, entity2);
         expect(depotService.compareDepot).toHaveBeenCalledWith(entity, entity2);
-      });
-    });
-
-    describe('compareAdministration', () => {
-      it('Should forward to administrationService', () => {
-        const entity = { id: 123 };
-        const entity2 = { id: 456 };
-        jest.spyOn(administrationService, 'compareAdministration');
-        comp.compareAdministration(entity, entity2);
-        expect(administrationService.compareAdministration).toHaveBeenCalledWith(entity, entity2);
       });
     });
   });

@@ -29,12 +29,6 @@
             >{{ last ? '' : ', ' }}
           </span>
         </dd>
-        <dt><span>Administration</span></dt>
-        <dd>
-          <div *ngIf="inscription.administration">
-            <a [routerLink]="['/administration', inscription.administration.id, 'view']">{{ inscription.administration.id }}</a>
-          </div>
-        </dd>
       </dl>
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
